@@ -39,7 +39,7 @@ definePageMeta({
 
 const { data } = await useAsyncData(
   'data',
-  () => $fetch('https://congvangvietnam.com/wp-json/wp/v2/posts?per_page=20')
+  () => $fetch('https://novel4u.net/wp-json/wp/v2/posts?per_page=20')
 )
 </script>
 <style>

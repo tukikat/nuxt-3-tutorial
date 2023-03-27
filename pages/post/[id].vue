@@ -28,52 +28,9 @@ const route = useRoute()
 let slug = route.params.id
 const { data: posts } = await useAsyncData(
   'posts',
-  () => $fetch(`https://congvangvietnam.com/wp-json/wp/v2/posts?slug=${slug}`)
+  () => $fetch(`https://novel4u.net/wp-json/wp/v2/posts?slug=${slug}`)
 )
 </script>
-  <!-- <script>
-  export default {
-    middleware: 'ref',
-    async asyncData({ $http, params }) {
-      const post = await $fetch(
-        `https://congvangvietnam.com/wp-json/wp/v2/posts?slug=${params.slug}`
-      );
-      return { post };
-    },
-    head() {
-      return {
-        title: this.post[0].title.rendered,
-        meta: [
-          {
-            hid: 'description',
-            name: 'description',
-            content: this.post[0].yoast_head_json.og_description
-          },
-          {
-            hid: 'og:title',
-            name: 'og:title',
-            content: this.post[0].yoast_head_json.og_title
-          },
-          {
-            hid: 'og:description',
-            name: 'og:description',
-            content: this.post[0].yoast_head_json.og_description
-          },
-          {
-            hid: 'og:image',
-            name: 'og:image',
-            content: this.post[0].yoast_head_json.og_image[0].url
-          }
-        ]
-      };
-    },
-    methods: {
-      goBack() {
-        return this.$router.go(-1);
-      },
-    },
-  };
-  </script> -->
 <style>
 body,
 html {
