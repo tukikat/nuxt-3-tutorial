@@ -19,7 +19,7 @@
           <div class="col-new" v-for="(item, index) in data" :key="index">
             <a :href="'post/' + item.slug">
               <img
-                :src="item.yoast_head_json.og_image[0].url"
+                :src="item.yoast_head_json?.og_image[0]?.url"
                 :alt="item.title.rendered"
               />
               <h3>{{ item.title.rendered }}</h3>
@@ -38,8 +38,20 @@ definePageMeta({
 })
 
 const { data } = await useAsyncData(
-  'data',
-  () => $fetch('https://novel4u.net/wp-json/wp/v2/posts?per_page=20')
+  async () => {
+    let res = await $fetch('https://novel4u.net/wp-json/wp/v2/posts?per_page=20')
+    for (let i = 0; i < res.length; i++) {
+      // let url = res[i].yoast_head_json?.og_image[0]?.url
+      // if (url) continue
+      // url = (res[i]?.content?.rendered || '').match(new RegExp('src="(.+)"', 'g'))
+      // res[i].yoast_head_json = {
+      //   og_image: [{
+      //     url: url || url[0]
+      //   }]
+      // }
+    }
+    return res
+  }
 )
 </script>
 <style>
